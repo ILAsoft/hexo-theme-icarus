@@ -24,7 +24,5 @@ hexo.extend.helper.register('is_tweet', function (post) {
 });
 
  hexo.extend.helper.register('is_page', function (post) {
-    //const is_tweet = hexo.extend.helper.get('is_tweet').bind(this);
-    //return !is_tweet(post) && post.categories && post.categories.length;
     return post.layout == 'page';
 });
