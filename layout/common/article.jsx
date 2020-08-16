@@ -20,7 +20,9 @@ module.exports = class extends Component {
     render() {
         const { config, helper, page, index } = this.props;
         const { article, plugins } = config;
-        const { has_thumbnail, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
+        const { has_thumbnail, get_thumbnail, url_for, date, date_xml, __, _p, is_tweet, is_page } = helper;
+        const tweet = is_tweet(page);
+        const pager = is_page(page);
 
         const indexLaunguage = config.language || 'en';
         const language = page.lang || page.language || config.language || 'en';
@@ -33,12 +35,12 @@ module.exports = class extends Component {
                     {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
                         <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
                     </a> : <span class="image is-7by3">
-                        <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
-                    </span>}
+                            <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
+                        </span>}
                 </div> : null}
                 {/* Metadata */}
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
-                    {page.layout !== 'page' ? <div class="article-meta size-small is-uppercase level is-mobile">
+                    {!pager ? <div class="article-meta size-small is-uppercase level is-mobile">
                         <div class="level-left">
                             {/* Date */}
                             <time class="level-item" dateTime={date_xml(page.date)} title={date_xml(page.date)}>{date(page.date)}</time>
@@ -49,7 +51,7 @@ module.exports = class extends Component {
                                 {(() => {
                                     const categories = [];
                                     page.categories.forEach((category, i) => {
-                                        categories.push(<a class="link-muted" href={url_for(category.path)}>{category.name}</a>);
+                                        categories.push(<a class="link-muted" href={url_for(category.path)}>/{category.name}</a>);
                                         if (i < page.categories.length - 1) {
                                             categories.push(<span>&nbsp;/&nbsp;</span>);
                                         }
@@ -57,6 +59,17 @@ module.exports = class extends Component {
                                     return categories;
                                 })()}
                             </span> : null}
+                            {/* Tags */}
+                            {page.tags && page.tags.length ? <span class="level-item">{(() => {
+                                const tags = [];
+                                page.tags.forEach((tag, i) => {
+                                    tags.push(<a class="link-muted" href={url_for(tag.path)}>#{tag.name}</a>);
+                                    if (i < page.tags.length - 1) {
+                                        tags.push(<span>,&nbsp;</span>);
+                                    }
+                                });
+                                return tags;
+                            })()}</span> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
@@ -72,11 +85,19 @@ module.exports = class extends Component {
                         </div>
                     </div> : null}
                     {/* Title */}
-                    <h1 class="title is-3 is-size-4-mobile">
-                        {index ? <a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a> : page.title}
-                    </h1>
+                    {!tweet && (index || !pager) ? <h1 class="title is-3 is-size-4-mobile">
+                        {(() => {
+                            if (index) {
+                                return <a class="link-muted" href={url_for(page.link || page.path)}>${page.title}</a>;
+                            } else {
+                                return page.title;
+                            }
+                        })()}
+                    </h1> : null}
                     {/* Content/Excerpt */}
                     <div class="content" dangerouslySetInnerHTML={{ __html: index && page.excerpt ? page.excerpt : page.content }}></div>
+                    {/* "Read more" button */}
+                    {index && page.excerpt ? <a class="article-more button is-small size-small" href={`${url_for(page.path)}#more`}>{__('article.more')}</a> : null}
                     {/* Tags */}
                     {!index && page.tags && page.tags.length ? <div class="article-tags size-small mb-4">
                         <span class="mr-2">#</span>
@@ -84,8 +105,6 @@ module.exports = class extends Component {
                             return <a class="link-muted mr-2" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
                         })}
                     </div> : null}
-                    {/* "Read more" button */}
-                    {index && page.excerpt ? <a class="article-more button is-small size-small" href={`${url_for(page.path)}#more`}>{__('article.more')}</a> : null}
                     {/* Share button */}
                     {!index ? <Share config={config} page={page} helper={helper} /> : null}
                 </article>
@@ -108,7 +127,7 @@ module.exports = class extends Component {
                 </div> : null}
             </nav> : null}
             {/* Comment */}
-            {!index ? <Comment config={config} page={page} helper={helper} /> : null}
+            {!index && !pager && !tweet ? <Comment config={config} page={page} helper={helper} /> : null}
         </Fragment>;
     }
 };

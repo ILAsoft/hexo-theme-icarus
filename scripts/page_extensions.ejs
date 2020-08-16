@@ -1,0 +1,30 @@
+hexo.extend.helper.register("excerpt_title", function (page) {
+    var util = require("hexo-util");
+    var excerpt = page.excerpt || page.content;
+    excerpt = util
+        .stripHTML(excerpt)
+        .trim()
+        .replace(/\n/g, " ")
+        .replace(/\s+/g, " ");
+    excerpt = util.truncate(excerpt, { length: 40, separator: " " });
+
+    return excerpt;
+});
+
+hexo.extend.helper.register('is_tweet', function (post) {
+    var util = require("hexo-util");
+    const list_categories = hexo.extend.helper.get('list_categories').bind(this);
+    if (util.stripHTML(list_categories(post.categories, {
+        show_count: false,
+        transform(str) {
+            return str.toUpperCase();
+        }
+    })) != "TWEET") { return false; }
+    else { return true; }
+});
+
+ hexo.extend.helper.register('is_page', function (post) {
+    //const is_tweet = hexo.extend.helper.get('is_tweet').bind(this);
+    //return !is_tweet(post) && post.categories && post.categories.length;
+    return post.layout == 'page';
+});
