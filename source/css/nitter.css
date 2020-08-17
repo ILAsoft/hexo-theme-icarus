@@ -1,11 +1,8 @@
 body {
-    --bg_color: #E6ECF0;
     --fg_color: #0F0F0F;
     --fg_faded: #657786;
     --fg_dark: var(--fg_faded);
     --fg_nav: var(--accent);
-    --bg_panel: #FFFFFF;
-    --bg_elements: #FDFDFD;
     --bg_overlays: #FFFFFF;
     --bg_hover: #F5F8FA;
     --grey: var(--fg_faded);
@@ -43,7 +40,6 @@ body {
 
 .main-thread {
     margin-bottom: 20px;
-    background-color: var(--bg_panel)
 }
 
 .main-tweet, .replies {
@@ -55,8 +51,7 @@ body {
     font-size: 20px
 }
 
-.reply {
-    background-color: var(--bg_panel);
+.reply {;
     margin-bottom: 10px
 }
 
@@ -139,8 +134,7 @@ body {
     max-height: 600px;
     border-radius: 7px;
     overflow: hidden;
-    flex-flow: column;
-    background-color: var(--bg_color);
+    flex-flow: column;;
     align-items: center;
     pointer-events: all
 }
@@ -305,7 +299,6 @@ video {
     border-width: 1px;
     border-style: solid;
     border-color: var(--dark_grey);
-    background-color: var(--bg_elements);
     overflow: hidden;
     color: inherit;
     display: flex;
@@ -429,7 +422,6 @@ video {
     position: relative;
     margin: 6px 0;
     height: 26px;
-    background: var(--bg_color);
     border-radius: 5px;
     display: flex;
     align-items: center
@@ -469,7 +461,6 @@ video {
     margin-top: 10px;
     border: solid 1px var(--dark_grey);
     border-radius: 10px;
-    background-color: var(--bg_elements);
     overflow: auto;
     padding: 6px;
     position: relative;
@@ -710,7 +701,6 @@ video {
     padding: 12px;
     border: solid 1px var(--dark_grey);
     border-radius: 10px;
-    background-color: var(--bg_color)
 }
 
 .tweet-link {
@@ -727,7 +717,6 @@ video {
 
 .profile-card {
     flex-wrap: wrap;
-    background: var(--bg_panel);
     padding: 12px;
     display: flex
 }
@@ -851,7 +840,6 @@ video {
 
 .photo-rail-card {
     float: left;
-    background: var(--bg_panel);
     border-radius: 0 0 4px 4px;
     width: 100%;
     margin: 5px 0
@@ -1042,7 +1030,6 @@ video {
 }
 
 .search-bar>form button {
-    background: var(--bg_elements);
     color: var(--fg_color);
     border: 0;
     border-radius: 3px;
@@ -1055,7 +1042,6 @@ video {
 .search-bar>form input {
     font-size: 16px;
     width: 100%;
-    background: var(--bg_elements);
     color: var(--fg_color);
     border: 0;
     border-radius: 4px;
@@ -1147,7 +1133,6 @@ video {
     right: 0;
     height: 17px;
     width: 17px;
-    background-color: var(--bg_elements);
     border: 1px solid var(--accent_border)
 }
 
@@ -1245,15 +1230,13 @@ video {
 }
 
 .timeline {
-    background-color: var(--bg_panel)
 }
 
 .timeline>div:not(:first-child) {
     border-top: 1px solid var(--border_grey)
 }
 
-.timeline-header {
-    background-color: var(--bg_panel);
+.timeline-header {;
     text-align: center;
     padding: 8px;
     display: block;
@@ -1270,8 +1253,7 @@ video {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin: 0 0 5px 0;
-    background-color: var(--bg_panel);
+    margin: 0 0 5px 0;;
     padding: 0
 }
 
@@ -1308,8 +1290,7 @@ video {
     flex-grow: 1.2
 }
 
-.timeline-footer {
-    background-color: var(--bg_panel);
+.timeline-footer {;
     padding: 6px 0
 }
 
@@ -1334,16 +1315,14 @@ video {
     text-align: center
 }
 
-.timeline-end {
-    background-color: var(--bg_panel);
+.timeline-end {;
     color: var(--accent);
     font-size: 16px;
     font-weight: 600;
     text-align: center
 }
 
-.show-more {
-    background-color: var(--bg_panel);
+.show-more {;
     text-align: center;
     padding: .75em 0;
     display: block!important
@@ -1361,8 +1340,7 @@ video {
     background-color: var(--darker_grey)
 }
 
-.top-ref {
-    background-color: var(--bg_color);
+.top-ref {;
     border-top: none!important
 }
 
@@ -1419,7 +1397,6 @@ video {
 
 .search-field>label {
     display: inline;
-    background-color: var(--bg_elements);
     color: var(--fg_color);
     border: 1px solid var(--accent_border);
     padding: 1px 6px 2px 6px;
