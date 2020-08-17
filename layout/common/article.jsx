@@ -42,14 +42,12 @@ module.exports = class extends Component {
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
                     {!pager ? <div class="article-meta size-small is-uppercase level is-mobile">
                         <div class="level-left">
-                            {/* Date */}
                             {/* Creation Date */}
-                            <time class="level-item" dateTime={date_xml(page.date)} title={date_xml(page.date)}>{date(page.date)}</time>
                             {page.date && <span class="level-item" dangerouslySetInnerHTML={{
                                 __html: _p('article.created_at', `<time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">${date(page.date)}</time>`)
                             }}></span>}
                             {/* Last Update Date */}
-                            {page.updated && <span class="level-item" dangerouslySetInnerHTML={{
+                            {page.updated && page.date && page.date!=page.date && <span class="level-item" dangerouslySetInnerHTML={{
                                 __html: _p('article.updated_at', `<time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">${date(page.updated)}</time>`)
                             }}></span>}
                             {/* author */}

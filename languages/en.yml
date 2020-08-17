@@ -25,17 +25,13 @@ widget:
     subscribe_email: 'Subscribe for Updates'
     subscribe: 'Subscribe'
     adsense: 'Advertisement'
-article:    
+article:
     created_at: 'Posted&nbsp;%s'
     updated_at: 'Updated&nbsp;%s'
     more: 'Read more'
     comments: 'Comments'
-    comments: 'Comments'
-    read: 'read'
     read_time: '%s read'
-    about: 'About'
     word_count:
-    words: 'words'
         one: 'About %d word'
         other: 'About %d words'
 donate:
