@@ -19,13 +19,9 @@ class Footer extends Component {
             <div class="container">
                 <div class="level">
                     <div class="level-start">
-                        <a class="footer-logo is-block mb-2" href={siteUrl}>
-                            {logo && logo.text ? logo.text : <img src={logoUrl} alt={siteTitle} height="28" />}
-                        </a>
                         <p class="size-small">
-                            <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
-                            &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
-                            <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                        <a href="/copyright/"><span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span></a>&nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
+                            <a href="https://github.com/ilasoft/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
@@ -36,7 +32,7 @@ class Footer extends Component {
                             {Object.keys(links).map(name => {
                                 const link = links[name];
                                 return <p class="control">
-                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={link.url}>
+                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} title={name} href={link.url}>
                                         {link.icon ? <i class={link.icon}></i> : name}
                                     </a>
                                 </p>;

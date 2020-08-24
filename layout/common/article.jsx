@@ -94,7 +94,7 @@ module.exports = class extends Component {
                     {!tweet && (index || !pager) ? <h1 class="title is-3 is-size-4-mobile">
                         {(() => {
                             if (index) {
-                                return <a class="link-muted" href={url_for(page.link || page.path)}>${page.title}</a>;
+                                return <a class="link-muted" href={url_for(page.link || page.path)}>{page.title}</a>;
                             } else {
                                 return page.title;
                             }
