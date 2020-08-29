@@ -20,22 +20,23 @@ module.exports = class extends Component {
     render() {
         const { config, helper, page, index } = this.props;
         const { article, plugins } = config;
-        const { has_thumbnail, get_thumbnail, url_for, date, date_xml, __, _p, is_tweet, is_page } = helper;
+        const { url_for, date, date_xml, __, _p, is_tweet, is_page } = helper;
         const tweet = is_tweet(page);
         const pager = is_page(page);
 
         const indexLaunguage = config.language || 'en';
         const language = page.lang || page.language || config.language || 'en';
+        const cover = page.cover ? url_for(page.cover) : null;
 
         return <Fragment>
             {/* Main content */}
             <div class="card">
                 {/* Thumbnail */}
-                {has_thumbnail(page) ? <div class="card-image">
+                {cover ? <div class="card-image">
                     {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
-                        <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
+                        <img class="fill" src={cover} alt={page.title || cover} />
                     </a> : <span class="image is-7by3">
-                            <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
+                            <img class="fill" src={cover} alt={page.title || cover} />
                         </span>}
                 </div> : null}
                 {/* Metadata */}
@@ -47,7 +48,7 @@ module.exports = class extends Component {
                                 __html: _p('article.created_at', `<time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">${date(page.date)}</time>`)
                             }}></span>}
                             {/* Last Update Date */}
-                            {page.updated && page.date && page.date!=page.date && <span class="level-item" dangerouslySetInnerHTML={{
+                            {page.updated && page.date && page.date != page.date && <span class="level-item" dangerouslySetInnerHTML={{
                                 __html: _p('article.updated_at', `<time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">${date(page.updated)}</time>`)
                             }}></span>}
                             {/* author */}

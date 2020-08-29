@@ -51,7 +51,6 @@ RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recentposts', functi
             title: post.title,
             date: date(post.date),
             dateXml: date_xml(post.date),
-            thumbnail: has_thumbnail(post) ? get_thumbnail(post) : null,
             categories: post.categories.map(function (category) {
                 return {
                     name: category.name,
