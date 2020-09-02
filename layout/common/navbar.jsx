@@ -79,7 +79,10 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
     if (navbar && navbar.menu) {
         const pageUrl = typeof page.path !== 'undefined' ? url_for(page.path) : '';
         Object.keys(navbar.menu).forEach(name => {
-            const url = url_for(navbar.menu[name]);
+            var url = url_for(navbar.menu[name]);
+            if (url.startsWith("/%3C")) {
+                url = url.replace("/%3C", "#");
+            }
             const active = isSameLink(url, pageUrl);
             menu[name] = { url, active };
         });

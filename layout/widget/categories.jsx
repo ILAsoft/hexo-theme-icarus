@@ -3,10 +3,10 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Categories extends Component {
     renderCategories(categories) {
-        return <div>{categories.filter(category => typeof category === 'object').map(category => {
+        return <ul class="menu-list">{categories.filter(category => typeof category === 'object').map(category => {
             return <li><a class="level is-mobile is-marginless" href={category.url}><span class="level-start"><span class="level-item">{category.name}</span></span><span class="level-end"><span class="level-item tag">{category.count}</span></span></a></li>;
         })}
-        </div>;
+        </ul>;
     }
     render() {
         const {
@@ -16,9 +16,8 @@ class Categories extends Component {
         } = this.props;
         return <div class="card widget">
             <div class="card-content">
-                <a name={title} href="/categories/"><h3 class="menu-label">{title}</h3></a><br /><ul class="menu-list">
+                <a name={title} href="/categories/"><h3 class="menu-label">{title}</h3></a>
                     {this.renderCategories(categories)}
-                </ul>
             </div>
         </div>;
     }
