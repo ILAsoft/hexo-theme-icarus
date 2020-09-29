@@ -80,7 +80,7 @@ $(document).ready(() => {
         if (!hasRightSidebar()) {
             return 0;
         }
-        return Math.max.apply(null, $rightSidebar.find('.widget').map(function() {
+        return Math.max.apply(null, $rightSidebar.find('.widget').map(function () {
             return $(this).offset().top + $(this).outerHeight(true);
         }));
     }
@@ -143,6 +143,10 @@ $(document).ready(() => {
     $(window).scroll(update);
 
     $('#back-to-top').on('click', () => {
-        $('body, html').animate({ scrollTop: 0 }, 400);
+        if (CSS && CSS.supports && CSS.supports('(scroll-behavior: smooth)')) {
+            window.scroll({ top: 0, behavior: 'smooth' });
+        } else {
+            $('body, html').animate({ scrollTop: 0 }, 400);
+        }
     });
 });
