@@ -15,12 +15,26 @@ class Footer extends Component {
             visitorCounterTitle
         } = this.props;
 
+        let footerLogo = '';
+        if (logo) {
+            if (logo.text) {
+                footerLogo = logo.text;
+            } else {
+                footerLogo = <img src={logoUrl} alt={siteTitle} height="28" />;
+            }
+        } else {
+            footerLogo = siteTitle;
+        }
+
         return <footer class="footer">
             <div class="container">
                 <div class="level">
                     <div class="level-start">
+                        <a class="footer-logo is-block mb-2" href={siteUrl}>
+                            {footerLogo}
+                        </a>
                         <p class="size-small">
-                        <a href="/copyright/"><span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span></a>&nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
+                            <a href="/copyright/"><span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span></a>&nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
                             <a href="https://github.com/ilasoft/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
