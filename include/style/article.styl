@@ -5,6 +5,40 @@ $article-font-size ?= 1.1rem;
 
 article {
     &.media {
+        color: $text-light;
+
+        a {
+            color: inherit;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+
+        .image {
+            width: 64px;
+            height: 64px;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .title {
+            @extend .is-size-6;
+            margin-bottom: 0.25em;
+        }
+
+        .date, .categories {
+            @extend .is-size-7;
+        }
+
+        .categories {
+            @extend .is-uppercase;
+        }
+
         .media-content {
             color: $text-light;
 
@@ -165,7 +199,7 @@ article {
         }
 
         a {
-            @extend .size-small, .has-text-grey;
+            @extend .is-size-7, .has-text-grey;
         }
     }
 
@@ -183,7 +217,7 @@ article {
         }
 
         h6 {
-            @extend .size-small;
+            @extend .is-size-7;
         }
 
         a {

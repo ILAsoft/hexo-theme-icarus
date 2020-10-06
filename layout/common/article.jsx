@@ -42,7 +42,7 @@ module.exports = class extends Component {
                 </div> : null}
                 {/* Metadata */}
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
-                    {!pager ? <div class="article-meta size-small is-uppercase level is-mobile">
+                    {!pager ? <div class="article-meta is-size-7 is-uppercase level is-mobile">
                         <div class="level-left">
                             {/* Creation Date */}
                             {page.date && <span class="level-item" dangerouslySetInnerHTML={{
@@ -105,12 +105,12 @@ module.exports = class extends Component {
                     {/* Content/Excerpt */}
                     <div class="content" dangerouslySetInnerHTML={{ __html: index && page.excerpt ? page.excerpt : page.content }}></div>
                     {/* "Read more" button */}
-                    {index && page.excerpt ? <a class="article-more button is-small size-small" href={`${url_for(page.link || page.path)}#more`}>{__('article.more')}</a> : null}
+                    {index && page.excerpt ? <a class="article-more button is-size-7 size-small" href={`${url_for(page.link || page.path)}#more`}>{__('article.more')}</a> : null}
                     {/* Licensing block */}
                     {!index && article && article.licenses && Object.keys(article.licenses)
                         ? <ArticleLicensing.Cacheable page={page} config={config} helper={helper} /> : null}
                     {/* Tags */}
-                    {!index && page.tags && page.tags.length ? <div class="article-tags size-small mb-4">
+                    {!index && page.tags && page.tags.length ? <div class="article-tags is-size-7 mb-4">
                         <span class="mr-2">#</span>
                         {page.tags.map(tag => {
                             return <a class="link-muted mr-2" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
