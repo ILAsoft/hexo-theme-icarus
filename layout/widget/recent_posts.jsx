@@ -22,7 +22,7 @@ class RecentPosts extends Component {
         } = this.props;
         return <div class="card widget">
             <div class="card-content">
-                <a name={title} href="/archives/"><h3 class="menu-label">{title}</h3></a>
+                <a name={title} href="/archives/" class="menu-label">{title}</a>
                 {this.renderPosts(posts)}
             </div>
         </div>;
