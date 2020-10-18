@@ -17,7 +17,7 @@ class Tags extends Component {
         return <div class="card widget">
             <div class="card-content">
                 <div class="menu">
-                    <a name={title} href="/tags/" class="menu-label">{title}</a>
+                    <a name={title} href="/tags/" class="menu-label">TAG</a>
                     {this.renderTags(tags)}
                 </div>
             </div>
